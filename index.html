@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Noura Foods | Reliable Food Distribution for Businesses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Brand palette taken from the logo: gold #9C6F29 and red #B03E3F, plus white. Everything else is a tint or shade of those two. */
+:root{
+  --gold:#9C6F29; --red:#B03E3F; --gold-dk:#6E4C17; --red-dk:#8A2E2F;
+  --white:#FFFFFF; --gold-tint:#F6EFE2; --red-tint:#F9EDED;
+  --bg:#FFFFFF; --bg2:#F6EFE2; --ink:#4A3413; --muted:#7A6236; --line:rgba(156,111,41,.28);
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1D1509;--bg2:#2A1E0D;--ink:#F6EFE2;--muted:#D8C6A3;--line:rgba(246,239,226,.22)}}
+:root[data-theme="dark"]{--bg:#1D1509;--bg2:#2A1E0D;--ink:#F6EFE2;--muted:#D8C6A3;--line:rgba(246,239,226,.22)}
+html{scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Montserrat',system-ui,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+.cond{font-family:'Bebas Neue','Arial Narrow',Impact,sans-serif;font-weight:400;letter-spacing:.01em;line-height:.95;margin:0}
+.btn{display:inline-block;padding:17px 34px;font-weight:600;font-size:15px;text-decoration:none;border:2px solid transparent;transition:background .2s,color .2s,border-color .2s}
+.btn-white{background:var(--white);color:var(--red)}
+.btn-white:hover{background:var(--gold-tint)}
+.btn-red{background:var(--red);color:var(--white)}
+.btn-red:hover{background:var(--red-dk)}
+.btn-gold{background:var(--gold);color:var(--white)}
+.btn-gold:hover{background:var(--gold-dk)}
+.btn-ow{border-color:var(--white);color:var(--white)}
+.btn-ow:hover{background:var(--white);color:var(--red)}
+
+/* header */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:3px solid var(--gold)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:82px;gap:24px}
+.logo{text-decoration:none;line-height:.9;display:block}
+.logo b{display:block;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:38px;color:var(--gold);letter-spacing:.02em}
+.logo span{display:block;font-weight:600;font-size:14px;letter-spacing:.34em;color:var(--red);margin-top:2px}
+.nav ul{display:flex;gap:38px;list-style:none;margin:0;padding:0}
+.nav ul a{font-size:14.5px;font-weight:600;text-decoration:none;color:var(--ink);padding:8px 0;border-bottom:2px solid transparent;transition:border-color .2s,color .2s}
+.nav ul a:hover{color:var(--red);border-color:var(--red)}
+.burger{display:none;width:48px;height:48px;background:var(--red);border:0;cursor:pointer;position:relative;padding:0}
+.burger span{position:absolute;left:13px;right:13px;height:2px;background:#fff;transition:transform .25s,opacity .2s}
+.burger span:nth-child(1){top:16px}.burger span:nth-child(2){top:23px}.burger span:nth-child(3){top:30px}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.menu{display:none;position:absolute;left:0;right:0;top:100%;background:var(--gold);padding:8px 24px 28px}
+.menu.open{display:block}
+.menu a{display:block;padding:16px 0;font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:.02em;text-decoration:none;color:#fff;border-bottom:1px solid rgba(255,255,255,.35)}
+.menu a.btn{font-family:'Montserrat',sans-serif;font-size:15px;text-align:center;margin-top:22px;border:0;background:#fff;color:var(--red)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;min-height:calc(100vh - 85px);min-height:min(720px,calc(100vh - 85px))}
+.hero-l{background:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:70px 5vw 70px max(32px,calc((100vw - 1240px)/2 + 32px))}
+.big{font-size:clamp(120px,17vw,260px);color:var(--gold);animation:up .9s cubic-bezier(.2,.7,.2,1) both}
+.big2{font-weight:500;font-size:clamp(50px,7.4vw,112px);color:var(--red);line-height:1;letter-spacing:0;margin:.05em 0 0;animation:up .9s .12s cubic-bezier(.2,.7,.2,1) both}
+.hero-l small{display:block;margin-top:34px;font-weight:600;font-size:15px;letter-spacing:.12em;color:var(--gold)}
+.hero-r{background:var(--red);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:70px max(32px,calc((100vw - 1240px)/2 + 32px)) 70px 5vw;position:relative;overflow:hidden}
+.hero-r::before{content:"";position:absolute;right:-140px;bottom:-140px;width:420px;height:420px;border-radius:50%;border:60px solid rgba(255,255,255,.08)}
+.hero-r h1{font-size:clamp(46px,5.4vw,80px);margin-bottom:26px;position:relative}
+.hero-r p{font-size:18px;font-weight:400;max-width:520px;margin:0 0 36px;position:relative}
+.hero-r .row{display:flex;gap:14px;flex-wrap:wrap;position:relative}
+@keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+.promise{background:var(--gold);color:#fff}
+.promise .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.promise div{padding:30px 26px;border-left:1px solid rgba(255,255,255,.4);font-size:16px;font-weight:500}
+.promise div:first-child{border-left:0;padding-left:0}
+.promise b{display:block;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:32px;letter-spacing:.02em;line-height:1.1}
+
+section{padding:120px 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;margin-bottom:56px}
+.head h2{font-size:clamp(56px,7.4vw,108px);color:var(--red)}
+.head p{max-width:440px;margin:0;color:var(--muted);font-size:17px}
+
+/* products */
+.prods{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.prod{padding:52px 40px 56px;min-height:440px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;color:#fff;transition:transform .3s}
+.prod:hover{transform:translateY(-8px)}
+.prod.p1{background:var(--red)}
+.prod.p2{background:var(--gold)}
+.prod.p3{background:var(--gold-dk)}
+.prod svg{position:absolute;top:44px;left:40px;width:74px;height:74px;stroke:#fff;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.prod h3{font-size:52px;margin-bottom:14px}
+.prod p{margin:0;font-size:16.5px;max-width:340px}
+.prod .flag{position:absolute;top:50px;right:40px;border:1.5px solid #fff;padding:5px 14px;font-size:12.5px;font-weight:600;letter-spacing:.1em}
+.note{margin:30px 0 0;color:var(--muted);max-width:760px;font-size:16.5px}
+
+/* audience */
+.aud{background:var(--gold);color:#fff}
+.aud-g{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:start}
+.aud h2{font-size:clamp(56px,7.4vw,108px)}
+.aud p.lead{font-size:19px;margin:24px 0 0;font-weight:500}
+.aud ul{list-style:none;margin:0;padding:0}
+.aud li{padding:22px 0;border-bottom:1px solid rgba(255,255,255,.45);font-family:'Bebas Neue',sans-serif;font-size:44px;letter-spacing:.02em;line-height:1;display:flex;align-items:center;justify-content:space-between;gap:20px;transition:padding-left .25s}
+.aud li:first-child{border-top:1px solid rgba(255,255,255,.45)}
+.aud li::after{content:"";flex:none;width:14px;height:14px;background:#fff;opacity:0;transition:opacity .25s}
+.aud li:hover{padding-left:14px}
+.aud li:hover::after{opacity:1}
+
+/* why */
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.why div{background:var(--bg2);padding:0 30px 40px;border-top:10px solid var(--gold)}
+.why div:nth-child(even){border-top-color:var(--red)}
+.why svg{width:46px;height:46px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin:34px 0 24px;display:block}
+.why div:nth-child(even) svg{stroke:var(--red)}
+.why h3{font-size:40px;color:var(--ink);margin-bottom:12px}
+.why p{margin:0;color:var(--muted);font-size:16px}
+
+/* cta */
+.cta{background:var(--red);color:#fff;padding:110px 0;position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;left:-160px;top:-160px;width:480px;height:480px;border-radius:50%;border:70px solid rgba(255,255,255,.07)}
+.cta-g{display:grid;grid-template-columns:1.4fr 1fr;gap:60px;align-items:center;position:relative}
+.cta h2{font-size:clamp(56px,7.4vw,108px)}
+.cta p{font-size:19px;margin:22px 0 0;max-width:520px}
+.cta .row{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end}
+
+footer{background:var(--gold);color:#fff;padding:56px 0 44px}
+.foot{display:flex;justify-content:space-between;align-items:end;gap:28px;flex-wrap:wrap}
+.foot .logo b{color:#fff;font-size:56px}.foot .logo span{color:#fff}
+.foot p{margin:14px 0 0;font-size:15px;font-weight:500}
+.foot .r{font-weight:600;font-size:15px;letter-spacing:.06em;text-align:right}
+
+@media (max-width:960px){
+  .nav{height:72px}.nav ul,.nav .desk{display:none}.burger{display:block}.logo b{font-size:34px}.logo span{font-size:12px}
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero-l{padding:60px 24px 44px}.hero-r{padding:56px 24px 64px}
+  .promise .wrap{grid-template-columns:1fr 1fr}.promise div:nth-child(3){border-left:0;padding-left:0}.promise div:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.4)}.promise div:nth-child(2){padding-left:26px}
+  section{padding:84px 0}.cta{padding:84px 0}
+  .prods{grid-template-columns:1fr}.prod{min-height:340px}
+  .aud-g,.cta-g{grid-template-columns:1fr;gap:44px}
+  .aud li{font-size:36px}
+  .why{grid-template-columns:1fr 1fr}
+  .cta .row{justify-content:flex-start}
+  .foot .r{text-align:left}
+}
+@media (max-width:560px){.wrap{padding:0 20px}.why{grid-template-columns:1fr}.promise .wrap{grid-template-columns:1fr}.promise div{border-left:0!important;padding-left:0!important;border-bottom:1px solid rgba(255,255,255,.4)}.promise div:last-child{border:0}.prod{padding:40px 26px}.prod svg{left:26px}.prod .flag{right:26px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Noura Foods home"><b>NOURA</b><span>FOODS</span></a>
+    <ul>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#clients">Who we supply</a></li>
+      <li><a href="#why">Why Noura</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn btn-red desk" href="#contact" style="padding:13px 26px">Request a Quote</a>
+    <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="menu" id="menu" aria-label="Mobile">
+    <a href="#products">Products</a>
+    <a href="#clients">Who we supply</a>
+    <a href="#why">Why Noura</a>
+    <a href="#contact">Contact</a>
+    <a class="btn" href="#contact">Request a Quote</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="hero-l">
+      <div class="cond big" role="img" aria-label="Noura Foods">NOURA</div>
+      <div class="big2" aria-hidden="true">FOODS</div>
+      <small>CHICKEN &bull; PITA BREAD &bull; VIRGIN OLIVE OIL</small>
+    </div>
+    <div class="hero-r">
+      <h1 class="cond">Reliable Food Distribution for Businesses</h1>
+      <p>Noura Foods is a food distributor providing chicken products, pita bread, and virgin olive oil to restaurants, caterers, retailers, and other commercial customers.</p>
+      <div class="row">
+        <a class="btn btn-white" href="#contact">Request a Quote</a>
+        <a class="btn btn-ow" href="#products">Our Products</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="promise">
+    <div class="wrap">
+      <div><b>Reliable supply</b>Products when you need them</div>
+      <div><b>Consistent quality</b>Every order</div>
+      <div><b>Competitive pricing</b>Built around your volume</div>
+      <div><b>Dependable service</b>Simple ordering</div>
+    </div>
+  </div>
+
+  <section id="products">
+    <div class="wrap">
+      <div class="head">
+        <h2 class="cond">Our Products</h2>
+        <p>We focus on reliable supply, consistent quality, competitive pricing, and dependable service to help businesses keep their operations running smoothly.</p>
+      </div>
+      <div class="prods">
+        <article class="prod p1">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M20 36c-6-8-4-20 8-24 10-3 20 2 22 12 2 9-4 14-8 18l4 8h-8l-3-5c-6 1-12 0-15-9z"/><circle cx="36" cy="22" r="1.6"/></svg>
+          <span class="flag">CORE CATEGORY</span>
+          <h3 class="cond">Chicken Products</h3>
+          <p>Our core distribution category, with chicken products available for businesses with regular and bulk supply needs.</p>
+        </article>
+        <article class="prod p2">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 38c0-14 10-24 24-24s24 10 24 24z"/><path d="M8 38h48v6c0 3-2 5-5 5H13c-3 0-5-2-5-5z"/></svg>
+          <h3 class="cond">Pita Bread</h3>
+          <p>Pita bread products for restaurants, catering companies, retailers, and other food businesses.</p>
+        </article>
+        <article class="prod p3">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M27 6h10v8l5 8v32c0 2-2 4-4 4H26c-2 0-4-2-4-4V22l5-8z"/><path d="M22 32h20M22 46h20"/></svg>
+          <h3 class="cond">Virgin Olive Oil</h3>
+          <p>Virgin olive oil products for commercial kitchens, food service operations, and retailers.</p>
+        </article>
+      </div>
+      <p class="note">We offer a range of products and sizes based on business requirements. Contact us for current availability, pricing, and ordering information.</p>
+    </div>
+  </section>
+
+  <section class="aud" id="clients">
+    <div class="wrap aud-g">
+      <div>
+        <h2 class="cond">Built for Businesses</h2>
+        <p class="lead">Noura Foods works with:</p>
+      </div>
+      <ul>
+        <li>Restaurants</li>
+        <li>Catering companies</li>
+        <li>Food service businesses</li>
+        <li>Retailers</li>
+        <li>Grocery and specialty food businesses</li>
+        <li>Other commercial customers</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="wrap">
+      <div class="head"><h2 class="cond">Why Noura Foods?</h2></div>
+      <div class="why">
+        <div><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg><h3 class="cond">Reliable Supply</h3><p>We work to keep your business supplied with the products you need.</p></div>
+        <div><svg viewBox="0 0 24 24"><path d="M4 12l8-8h8v8l-8 8z"/><circle cx="15.5" cy="8.5" r="1.2"/></svg><h3 class="cond">Competitive Pricing</h3><p>Business-focused pricing based on your requirements and volume.</p></div>
+        <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg><h3 class="cond">Consistent Service</h3><p>A straightforward approach to ordering and distribution.</p></div>
+        <div><svg viewBox="0 0 24 24"><path d="M4 20V10M12 20V4M20 20v-7"/></svg><h3 class="cond">Growing Product Range</h3><p>Chicken products, pita bread, virgin olive oil, and additional food products to support your business needs.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact" style="padding:110px 0">
+    <div class="wrap cta-g">
+      <div>
+        <h2 class="cond">Need Food Supply for Your Business?</h2>
+        <p>Tell us what your business needs and our team will help you find the right products and supply options.</p>
+      </div>
+      <div class="row">
+        <a class="btn btn-white" href="mailto:info@example.com?subject=Quote%20request">Request a Quote</a>
+        <a class="btn btn-ow" href="mailto:info@example.com">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a class="logo" href="#top" aria-label="Back to top"><b>NOURA</b><span>FOODS</span></a>
+      <p>Reliable Food Distribution for Businesses</p>
+    </div>
+    <div class="r">CHICKEN &bull; PITA BREAD &bull; VIRGIN OLIVE OIL</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var burger=document.querySelector('.burger'),menu=document.getElementById('menu');
+  function setMenu(o){menu.classList.toggle('open',o);burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'Close menu':'Open menu');}
+  burger.addEventListener('click',function(){setMenu(!menu.classList.contains('open'));});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false);});
+  window.addEventListener('resize',function(){if(window.innerWidth>960)setMenu(false);});
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var id=a.getAttribute('href').slice(1),t=document.getElementById(id);
+      if(!t)return;
+      e.preventDefault();setMenu(false);
+      var y=id==='top'?0:t.getBoundingClientRect().top+window.pageYOffset-document.querySelector('.bar').offsetHeight+1;
+      window.scrollTo({top:y,behavior:'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>
